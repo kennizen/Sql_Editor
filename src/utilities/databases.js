@@ -1,8 +1,6 @@
-import React from "react";
-
 export const databases = {
     database1: {
-        table1: [
+        customer: [
             {
                 customerID: "ALFKI",
                 companyName: "Alfreds Futterkiste",
@@ -121,7 +119,7 @@ export const databases = {
                 fax: "91.24.45.41",
             },
         ],
-        table2: [
+        product: [
             {
                 productID: "1",
                 productName: "Chai",
@@ -257,7 +255,7 @@ export const databases = {
         ],
     },
     database2: {
-        table1: [
+        place: [
             {
                 territoryID: "01581",
                 territoryDescription: "Westboro",
@@ -526,9 +524,3 @@ export const databases = {
         ],
     },
 };
-
-export const getDatabase = (databaseName) => {
-    return databases[databaseName];
-};
-
-export const DatabaseContext = React.createContext();

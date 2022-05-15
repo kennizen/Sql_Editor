@@ -1,19 +1,35 @@
 import React, { useState } from "react";
+
+// components
 import LeftBar from "./components/leftSide/LeftBar";
 import MiddleSection from "./components/middleSection/MiddleSection";
 import TopBar from "./components/topBar/TopBar";
 
-import { databases, DatabaseContext, getDatabase } from "./contexts/databases";
+// contexts
+import { DatabaseContext } from "./contexts/databaseContext";
+
+// utilities
+import { databases } from "./utilities/databases";
 
 function App() {
+    // states for currently selected database and executed query
     const [currentDb, setCurrentDb] = useState({ dbName: "database1", db: databases.database1 });
+    const [query, setQuery] = useState({
+        query: "",
+        dbName: "",
+    });
+    const [toggleLeftBar, setToggleLeftBar] = useState(false);
 
     return (
-        <DatabaseContext.Provider value={{ databases, getDatabase, currentDb }}>
-            <div className="h-screen flex overflow-hidden">
-                <LeftBar />
-                <div className="flex flex-col w-full">
-                    <TopBar setCurrentDb={setCurrentDb} />
+        <DatabaseContext.Provider value={{ databases, currentDb, query, setQuery }}>
+            <div className="h-screen flex overflow-hidden w-full">
+                <LeftBar toggleLeftBar={toggleLeftBar} setToggleLeftBar={setToggleLeftBar} />
+                <div className="flex flex-col md:w-full mmd:w-full lg:w-[calc(100%-256px)]">
+                    <TopBar
+                        setCurrentDb={setCurrentDb}
+                        setToggleLeftBar={setToggleLeftBar}
+                        toggleLeftBar={toggleLeftBar}
+                    />
                     <MiddleSection />
                 </div>
             </div>

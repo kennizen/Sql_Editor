@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import CodeMirror from "@uiw/react-codemirror";
-import { sql } from "@codemirror/lang-sql";
 
-import { languages } from "../../../utilities/languages";
-import { fontSizes } from "../../../utilities/fontSize";
+// components
+import CodeMirror from "@uiw/react-codemirror";
 import ActionBar from "./actionBar/ActionBar";
 
+// lang-import-codemirror
+import { sql } from "@codemirror/lang-sql";
+
+// utilities
+import { languages } from "../../../utilities/languages";
+import { fontSizes } from "../../../utilities/fontSize";
+
 const Editor = () => {
-    // state variable to get value inside editor
-    const [value, setValue] = useState("-- SQL EDITOR");
-
-    // state variable for font size
+    // states for default editor value, font size, language
+    const [value, setValue] = useState(`select * from customer; 
+select * from product;
+select * from customer where country = 'mexico';`);
     const [fontSize, setFontSize] = useState(fontSizes[16]);
-
-    // state variable for language
     const [language, setLanguage] = useState(languages.SQL);
 
     // function to get the value inside the editor
@@ -31,12 +34,10 @@ const Editor = () => {
         setLanguage(languages[e.target.value]);
     };
 
-    console.log(fontSize);
-    console.log(language);
-
     return (
         <div className="flex flex-col">
             <ActionBar
+                value={value}
                 handleFontSizeChange={handleFontSizeChange}
                 handleLanguageChange={handleLanguageChange}
             />

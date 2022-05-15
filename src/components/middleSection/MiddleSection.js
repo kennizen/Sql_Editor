@@ -1,4 +1,6 @@
 import React from "react";
+
+// components
 import Split from "react-split";
 import Editor from "./editor/Editor";
 import OutputSection from "./outputSection/OutputSection";
@@ -13,7 +15,13 @@ const MiddleSection = () => {
             className="flex"
             style={{ height: "calc(100% - 47px)" }}
         >
-            <Split gutterSize={5} minSize={150} direction="vertical" className="h-full">
+            <Split
+                gutterSize={5}
+                sizes={[40, 60]}
+                minSize={150}
+                direction="vertical"
+                className="h-full"
+            >
                 <Editor />
                 <OutputSection />
             </Split>

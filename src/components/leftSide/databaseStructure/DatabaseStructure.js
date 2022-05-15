@@ -1,11 +1,17 @@
 import React, { useContext, useState } from "react";
-import { DatabaseContext } from "../../../contexts/databases";
+
+// icons
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ViewModuleRoundedIcon from "@mui/icons-material/ViewModuleRounded";
 
+// contexts
+import { DatabaseContext } from "../../../contexts/databaseContext";
+
 const DatabaseStructure = () => {
     const { currentDb } = useContext(DatabaseContext);
+
+    // states for toggling of the table view
     const [showColumns, setShowColumns] = useState(() => {
         let ar = [];
         let len = Object.keys(currentDb.db).length;
@@ -13,6 +19,7 @@ const DatabaseStructure = () => {
         return ar;
     });
 
+    // function to handle the toggle of the table view
     const handleShowColumns = (e) => {
         let i = parseInt(e.target.id);
         let ar = showColumns;
@@ -21,7 +28,7 @@ const DatabaseStructure = () => {
     };
 
     return (
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto bg-white">
             <h1 className="bg-gray-100 font-semibold px-3 py-[11px] sticky top-0">
                 Database Structure
             </h1>
@@ -45,7 +52,7 @@ const DatabaseStructure = () => {
                             )}
                             {key}
                         </h1>
-                        {showColumns[i] === 1 ? (
+                        {showColumns[i] === 1 &&
                             Object.keys(currentDb.db[key][0]).map((val, i) => {
                                 return (
                                     <h1 className="pl-14" key={i}>
@@ -58,10 +65,7 @@ const DatabaseStructure = () => {
                                         {val}
                                     </h1>
                                 );
-                            })
-                        ) : (
-                            <></>
-                        )}
+                            })}
                     </div>
                 );
             })}

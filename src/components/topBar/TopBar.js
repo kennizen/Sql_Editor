@@ -1,20 +1,31 @@
 import React, { useContext, useState } from "react";
+
+// components
 import MyButton from "../button/MyButton";
-import { DatabaseContext } from "../../contexts/databases";
+import MySelect from "../select/MySelect";
+
+// icons
 import AddIcon from "@mui/icons-material/Add";
 import LogoutIcon from "@mui/icons-material/Logout";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import SettingsIcon from "@mui/icons-material/Settings";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const TopBar = ({ setCurrentDb }) => {
+// contexts
+import { DatabaseContext } from "../../contexts/databaseContext";
+
+const TopBar = ({ setCurrentDb, setToggleLeftBar, toggleLeftBar }) => {
     const { databases } = useContext(DatabaseContext);
 
+    // states for seleted databse
     const [selectedDb, setSelectedDb] = useState("database1");
 
+    // function to set the selected database
     const handleChange = (e) => {
         setSelectedDb(e.target.value);
     };
 
+    // function to load the selected database
     const loadDb = () => {
         setCurrentDb({
             dbName: selectedDb,
@@ -22,19 +33,25 @@ const TopBar = ({ setCurrentDb }) => {
         });
     };
 
-    console.log(selectedDb);
+    // function to handle left bar toggle in small sceen
+    const handleToggle = () => {
+        setToggleLeftBar(!toggleLeftBar);
+    };
 
     return (
-        <div className="h-max p-2 w-full border-b border-gray-500 flex item-center justify-between">
-            <div className="w-1/2 flex items-center justify-center gap-x-5">
+        <div className="h-max p-2 border-b border-gray-500 flex item-center justify-between">
+            <div className="w-1/2 flex items-center lg:justify-center md:justify-start mmd:justify-start gap-x-7">
+                <MyButton
+                    onclick={handleToggle}
+                    myStyle={
+                        "bg-blue-600 text-white text-xs hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800 px-1 lg:hidden md:block mmd:block"
+                    }
+                >
+                    <ArrowForwardIosIcon fontSize="small" />
+                </MyButton>
                 <div className="flex items-center justify-between gap-x-2 text-sm">
                     <label htmlFor="fontSize-select">Database</label>
-                    <select
-                        defaultValue={selectedDb}
-                        onChange={handleChange}
-                        id="fontSize-select"
-                        className="form-select appearance-none block max-w-max px-1 py-1 text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-500 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    >
+                    <MySelect defaultValue={selectedDb} onChange={handleChange}>
                         {Object.keys(databases).map((db, index) => {
                             return (
                                 <option key={index} value={db}>
@@ -42,7 +59,7 @@ const TopBar = ({ setCurrentDb }) => {
                                 </option>
                             );
                         })}
-                    </select>
+                    </MySelect>
                 </div>
                 <MyButton
                     onclick={loadDb}

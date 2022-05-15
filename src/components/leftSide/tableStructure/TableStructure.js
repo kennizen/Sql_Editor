@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
-import { DatabaseContext } from "../../../contexts/databases";
+
+// icons
 import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
 import ViewModuleRoundedIcon from "@mui/icons-material/ViewModuleRounded";
+
+// contexts
+import { DatabaseContext } from "../../../contexts/databaseContext";
 
 const TableStructure = () => {
     const { currentDb } = useContext(DatabaseContext);
 
     return (
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto bg-white">
             <h1 className="bg-gray-100 font-semibold px-3 py-[11px] sticky top-0 mb-2">
                 Table Structure
             </h1>
@@ -42,6 +46,7 @@ const TableStructure = () => {
                     </div>
                 );
             })}
+            <div className="mt-2"></div>
         </div>
     );
 };
