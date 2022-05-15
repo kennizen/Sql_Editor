@@ -19,7 +19,7 @@ export const getQueryResult = (query) => {
             );
             return newData;
         default:
-            return "> Please run a single query at a time to see the result.";
+            return "> Please run a single query at a time to see the result (make sure there is exactly one statement in the editor).";
     }
 };
 

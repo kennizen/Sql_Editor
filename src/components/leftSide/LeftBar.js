@@ -22,7 +22,7 @@ const LeftBar = ({ toggleLeftBar, setToggleLeftBar }) => {
                     : "md:hidden mmd:hidden "
             } w-64 border-r border-gray-500 flex-shrink-0 lg:flex lg:flex-col lg:static`}
         >
-            <h1 className="bg-white py-[9px] text-lg text-center border-b border-gray-600 uppercase md:flex md:items-center md: justify-evenly mmd:flex mmd:items-center mmd:justify-evenly lg:block">
+            <h1 className="bg-white py-[9px] text-lg text-center uppercase md:flex md:items-center md: justify-evenly mmd:flex mmd:items-center mmd:justify-evenly lg:block">
                 Sql Editor
                 <MyButton onclick={handleToggle} myStyle={"lg:hidden md:block mmd:block"}>
                     <ArrowBackIosIcon fontSize="small" />
