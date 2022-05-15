@@ -14,8 +14,8 @@ const ActionBar = ({ handleExportTypesChange }) => {
     return (
         <div className="bg-gray-100 w-full p-2 flex items-center justify-between">
             <h1 className="text-base">Result</h1>
-            <div className="flex items-center justify-end">
-                <div className="flex items-center justify-between gap-x-2 text-sm mr-7">
+            <div className="flex items-center justify-end gap-x-2">
+                <div className="flex items-center justify-between gap-x-2 text-sm">
                     <label htmlFor="fontSize-select">Export</label>
                     <MySelect defaultValue={"CSV"} onChange={handleExportTypesChange}>
                         {Object.keys(exportTypes).map((types, index) => {

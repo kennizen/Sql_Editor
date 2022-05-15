@@ -40,7 +40,7 @@ const TopBar = ({ setCurrentDb, setToggleLeftBar, toggleLeftBar }) => {
 
     return (
         <div className="h-max p-2 border-b border-gray-500 flex item-center justify-between">
-            <div className="w-1/2 flex items-center lg:justify-center md:justify-start mmd:justify-start gap-x-7">
+            <div className="w-1/2 flex items-center lg:justify-center md:justify-start mmd:justify-start gap-x-2">
                 <MyButton
                     onclick={handleToggle}
                     myStyle={

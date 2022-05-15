@@ -46,7 +46,7 @@ const ActionBar = ({ handleFontSizeChange, handleLanguageChange, value }) => {
                     <StopIcon fontSize="small" />
                 </MyButton>
             </div>
-            <div className="flex items-center w-1/2 justify-end gap-x-10">
+            <div className="flex items-center w-1/2 justify-end gap-x-2">
                 <div className="flex items-center justify-between gap-x-2 text-sm">
                     <label className="flex items-center gap-x-1" htmlFor="fontSize-select">
                         <span>Font</span>
@@ -62,7 +62,7 @@ const ActionBar = ({ handleFontSizeChange, handleLanguageChange, value }) => {
                         })}
                     </MySelect>
                 </div>
-                <div className="flex items-center gap-x-2 mr-4 text-sm">
+                <div className="flex items-center gap-x-2 text-sm">
                     <label htmlFor="language-select">Language</label>
                     <MySelect defaultValue={"SQL"} onChange={handleLanguageChange}>
                         {Object.keys(languages).map((lang, index) => {
